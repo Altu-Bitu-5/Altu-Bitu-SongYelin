@@ -19,9 +19,6 @@ int main()
         while (n--)
         {
             cin >> name >> ctg;
-            if (m.find(ctg) == m.end()) // m에 같은 종류가 없으면 추가
-                m.insert({ctg, 1});
-            else
                 m[ctg]++; // 있으면 key 값 증가
         }
         int sum = 1;

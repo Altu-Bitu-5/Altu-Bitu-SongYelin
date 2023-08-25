@@ -22,18 +22,18 @@ int main()
         vector<pair<int, int>> g;
         for (int j = 0; j < n; j++)
         {
-            cin >> a >> b;
-            g.push_back({a, b}); // 지원자의 각각 순위를 백터에 넣음
+            cin >> g[j].first >> g[j].first;
+            // 지원자의 각각 순위를 백터에 넣음
         }
         sort(g.begin(), g.end()); // 서류 성적의 순윌로 정렬
         int count = 1;            // 서류 순위 1등은 자동 채용
-        int k = 0;
+        int ahead = 0;
         for (int l = 1; l < n; l++)
         {
-            if (g[k].second > g[l].second)
+            if (g[ahead].second > g[l].second)
             { // 앞 지원자와 면접순위 비교, 앞 순서보다 순위가 더 크면 포함되지 않음
                 count++;
-                k = l;
+                ahead = l;
             }
         }
         cout << count << "\n";

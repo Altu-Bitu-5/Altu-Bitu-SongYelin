@@ -4,24 +4,25 @@
 #include <vector>
 
 using namespace std;
+int sum(string a)
+{
+    int sum = 0;
+    for (int i = 0; i < a.size(); i++)
+    {
+        if (isdigit(a[i]))
+        {
+            sum += a[i] - '0';
+        }
+    }
+    return sum;
+}
 bool cmp(string a, string b)
 {
-    int asum = 0, bsum = 0;
 
     if (a.size() != b.size()) // 길이가 다르면 오름차순으로 정렬
         return a.size() < b.size();
-    for (int i = 0; i < a.size(); i++)
-    {
-        if (a[i] - '0' <= 9 && a[i] - '0' >= 0)
-            asum += a[i] - '0';
-    }
-    for (int i = 0; i < b.size(); i++)
-    {
-        if (b[i] - '0' <= 9 && b[i] - '0' >= 0)
-            bsum += b[i] - '0';
-    }
-    if (asum != bsum)
-        return asum < bsum;
+    if (sum(a) != sum(b))
+        return sum(a) < sum(b);
     return a < b;
 }
 int main()
@@ -36,6 +37,8 @@ int main()
     }
     sort(guitar, guitar + n, cmp);
     for (int i = 0; i < n; i++)
+    {
         cout << guitar[i] << '\n';
+    }
     return 0;
 }
