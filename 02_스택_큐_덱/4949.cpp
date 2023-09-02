@@ -2,10 +2,8 @@
 #include <algorithm>
 #include <string>
 #include <vector>
-#include <cmath>
 #include <stack>
-#include <queue>
-#include "map"
+
 
 
 using namespace std;
