@@ -64,14 +64,17 @@ int main() {
     cin>>n;
     vector<bool> is_prime=findPrime();//배열의 인덱스가 소수?
     vector<int> primes= getPrimes(is_prime);//소수들을 집합
-    for (int i = 0; i < primes.size(); i++)
+    for (int i = 0; i < primes.size(); i++) {
         if (primes[i] > n)
             break;
 
-        else{
+        else {
 
-            if (result(primes[i]))
+            if (result(primes[i])) {
 
-            cout << primes[i] << "\n";}
+                cout << primes[i] << "\n";
+            }
+        }
+    }
     return 0;
 }
