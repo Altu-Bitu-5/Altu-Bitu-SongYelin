@@ -5,14 +5,13 @@ const int MAX=1000000;
 
 vector<bool> findPrime(){//배열의 인덱스가 소수인지 아닌지 판별
     vector<bool> primes(MAX+1, true);
+    primes[0] = primes[1] = false;
     for(int i=2; i<=MAX; i++){
         if(!primes[i]){//지운 값은 패스
             continue;
         }
         for(int j=i*2; j<=MAX; j+=i){//i*i부터
-            if(!primes[j]) {
-                continue;//지운 값은 패스
-            }
+
             primes[j]=false; //지우기
         }
     }
@@ -52,7 +51,7 @@ int main() {
                     break;
                 }
             }
-        if (!isPrint) cout << "Goldbach's conjecture is wrong.\n";
+        if (!isPrint) {cout << "Goldbach's conjecture is wrong.\n";}
         }
 
     return 0;
