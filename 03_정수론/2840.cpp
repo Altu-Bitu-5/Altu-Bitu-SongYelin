@@ -1,44 +1,49 @@
 #include <iostream>
 #include "vector"
-using namespace std;
 
+using namespace std;
+typedef pair<int, char> ic;
+string printWheel(int n, int index, vector<char>& wheel) {
+    string ans = "";
+    //바퀴를 돌릴 때와 반대방향으로 출력
+    for (int i = index + n; i > index; i--) {
+        ans += wheel[i % n];
+    }
+    return ans;
+}
+
+string makeWheel(int n, int k, vector<ic>& record) {
+
+    vector<bool> is_available(26, false);
+    int cnt=0;
+    vector<char> lucky(n, '?');
+    for (int i = 0; i < k; i++) {
+        int s=record[i].first;
+        int c=record[i].second;
+
+        cnt = (cnt + s) % n;
+
+        if (lucky[cnt] == c) {
+            continue;
+        }
+        if (lucky[cnt] != '?' || is_available[c - 'A']) {
+            return "!";
+        }
+        lucky[cnt] = c;
+        is_available[c - 'A'] = true;
+
+    }
+    return printWheel(n, cnt, lucky);
+}
 int main() {
     int n,k;
     cin>>n>>k;
-    vector<char> lucky(n,'?');
 
-    int cnt;
-    while(k--){
-        int s;
-        char c;
-        //입력
-        cin>>s>>c;
-        cnt+=s;
-        cnt%=n;
-        if(lucky[cnt]!='?'&&lucky[cnt]!=c){//전에 나왔던 문자와 다른 문자
-            cout<<'!';
-            return 0;
-        }
-        lucky[cnt]=c;
-
+    vector<ic> record(k);
+    for (int i = 0; i < k; i++) {
+        cin >> record[i].first >> record[i].second;
     }
+    cout << makeWheel(n, k, record);
 
-    //한 배열에서 중복값이 나오면 !
-    for(int i=0; i<n; i++){
-        for(int j=i+1; j<n; j++){
-            if(lucky[i]!='?'&&lucky[i]==lucky[j]){
-                cout<<'!';
-                return 0;
-            }
-        }
-    }
-
-    //출력
-   for(int i=0; i<n; i++){
-        cout<<lucky[cnt--];
-        if(cnt<0){//음수면 인덱스에 배열의 사이즈를 더함
-            cnt+=n;
-        }
-    }
     return 0;
 }

@@ -26,18 +26,14 @@ int main() {
         findgcd = gcd(findgcd, v[i]-v[i-1]);
     }
     vector<int> gcd_v;
-    for (int i = 2; i*i <= findgcd; i++)//최대공약수의 약수들
+    for (int i = 2; i*2 <=findgcd; i++)//최대공약수의 약수들
     {
         if (findgcd % i == 0)
         {
             gcd_v.push_back(i);
-            gcd_v.push_back(findgcd / i);
         }
     }
     gcd_v.push_back(findgcd);
-    sort(gcd_v.begin(), gcd_v.end());
-    // 중복 제거
-    gcd_v.erase(unique(gcd_v.begin(),gcd_v.end()),gcd_v.end());
     for (int i = 0; i < gcd_v.size(); i++)
     {
         cout << gcd_v[i] << " ";

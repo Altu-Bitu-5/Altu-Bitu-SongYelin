@@ -5,6 +5,7 @@ const int MAX=1000000;
 using namespace std;
 vector<bool> findPrime(){//배열의 인덱스가 소수인지 아닌지 판별
     vector<bool> primes(MAX+1, true);
+    primes[0] = primes[1] = false;
     for(int i=2; i<=MAX; i++){
         if(!primes[i]){//지운 값은 패스
             continue;
@@ -42,12 +43,14 @@ bool result(int n){
         temp /= 10;
 
     }
-        if(sum==1)
-            return true;
-        if(!visited.count(sum))
-            visited[sum]= true;
-        else
+        if(sum==1){
+            return true;}
+        if(!visited.count(sum)) {
+            visited[sum] = true;
+        }
+        else {
             return false;
+        }
         temp=sum;
     }
 }
