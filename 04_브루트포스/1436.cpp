@@ -2,12 +2,8 @@
 #include "string"
 using namespace std;
 
-int main() {
-
-    int n;
+int solution(int &n){
     int cnt=0;
-    cin>>n;//입력
-
     for(int i=666; ; i++){
         int tmp=i;
         while (tmp>=666){
@@ -18,10 +14,18 @@ int main() {
             tmp/=10;
         }
         if(n==cnt){
-            cout<<i;//출력
-            return 0;
+            return i;
         }
     }
+}
+
+int main() {
+
+    int n;
+
+    cin>>n;
+
+    cout<<solution(n);
 
     return 0;
 }
