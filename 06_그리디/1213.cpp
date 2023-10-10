@@ -9,7 +9,7 @@ void countalpa(string word , vector<int> &alpha){//각 알파벳의 개수 세�
         alpha[word[i]-'A']++;
     }
 }
-bool canNot(vector<int> alpha){
+bool canNot(vector<int> &alpha){
     int cnt=0;
     for(int i=0; i<26; i++) {
         if (alpha[i] % 2 == 1)

@@ -1,8 +1,9 @@
 #include <iostream>
+#include <iostream>
 #include "vector"
 #include "cmath"
 using namespace std;
-double search(int n,vector<double> v){
+long long search(int n,vector<long long> v){
     double speed=v[n-1];
     for (int i = n - 2; i >= 0; i--) {//뒤에서부터 배수 찾기
         speed = ceil(speed / v[i]) * v[i];

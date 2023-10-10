@@ -1,20 +1,15 @@
 #include <iostream>
-#include "vector"
+#include <vector>
 using namespace std;
 
-int main() {
-    int n,m,b;
-    int max=987654321;
-    int h;
-// 입력
-    cin >> n >> m >> b;
-    vector<vector<int>> ground(n, vector<int>(m));
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            cin >> ground[i][j];
-        }
-    }
+const int INF = 987'654'321;
 
+typedef pair<int, int> pii;
+
+pii makeGroundEven(int n, int m, int b, vector<vector<int>>& ground){
+
+    int h;
+    int max=INF;
     for(int e = 0; e <= 256; e++){
         int x = 0; //build
         int y = 0; //remove
@@ -35,6 +30,25 @@ int main() {
             }
         }
     }
-    cout << max<< " " << h;
+    return {max,h};
+}
+
+int main() {
+    int n,m,b;
+    int h;
+    int max=INF;
+// 입력
+    cin >> n >> m >> b;
+    vector<vector<int>> ground(n, vector<int>(m));
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cin >> ground[i][j];
+        }
+    }
+
+    pii answer = makeGroundEven(n, m, b, ground);
+
+    // 출력
+    cout << answer.first << " " << answer.second << '\n';
     return 0;
 }
