@@ -42,7 +42,7 @@ void putRobot(deque<info> &belt) {
     }
 }
 
-// 벨트의 내구도 체크
+// 벨트의 내구도 체크하기
 bool checkFinish(deque<info> &belt, int n, int k) {
     int count = 0;
 
